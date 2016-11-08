@@ -1,0 +1,19 @@
+syntax:glob
+target
+.settings
+.project
+
+syntax:regexp
+
+# Jenkins' local Maven repository
+(^|/)\.repository/
+syntax: glob
+installations/*
+.classpath
+demo-db-tool.properties
+licenses/*
+log/*
+image_cache/*
+MAINTENANCE_MODE_ENABLED
+.gitignore
+.git/*
