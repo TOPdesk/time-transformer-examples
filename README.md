@@ -7,17 +7,17 @@ The example application is a little authentication webservice where you have to 
 *Disclaimer: this application is only intended to give a use case for time-dependent code. It is explicitly __not__ an example of how to do authentication in a web application!*
 
 # Running the application server manually
-* This example project currently requires JDK10 or higher to run. The JDK8 version of this example is available under the [java-8 tag](https://github.com/TOPdesk/time-transformer-examples/releases/tag/java-8).
+* This example project currently requires JDK10 or higher to run. The JDK8 version of this example is available under the [java-8 tag](https://github.com/TOPdesk/time-transformer-examples/tree/java-8).
 * Build the application server:
   ```
   mvn clean package
   ```
-  
+
 * Start the application server.
   ```
   java -jar target/time-transformer-examples-1.0.0-SNAPSHOT.jar
   ```
-  
+
 * Browse to `http://localhost:8080/login`
 * Login using username `admin` and password `admin`
 
