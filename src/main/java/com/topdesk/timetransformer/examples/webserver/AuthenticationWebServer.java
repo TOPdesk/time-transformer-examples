@@ -19,7 +19,6 @@ import com.sun.net.httpserver.HttpServer;
 import com.topdesk.timetransformer.TimeTransformer;
 import com.topdesk.timetransformer.TransformingTime;
 
-@SuppressWarnings("restriction") // Eclipse does not recognize that HttpExchange is @jdk.Exported
 public class AuthenticationWebServer {
 	private static final int PASSWORD_ATTEMPTS = 3;
 	

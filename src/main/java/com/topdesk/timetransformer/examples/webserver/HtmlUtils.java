@@ -14,7 +14,6 @@ import java.util.Map;
 
 import com.sun.net.httpserver.HttpExchange;
 
-@SuppressWarnings("restriction") // Eclipse does not recognize that HttpExchange is @jdk.Exported
 class HtmlUtils {
 	static final String USERNAME_PARAMETER = "username";
 	static final String PASSWORD_PARAMETER = "password";
