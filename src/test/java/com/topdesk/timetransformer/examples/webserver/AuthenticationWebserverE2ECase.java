@@ -175,6 +175,7 @@ public class AuthenticationWebserverE2ECase {
 		ProcessBuilder processBuilder = new ProcessBuilder("java",
 				"-javaagent:" + javaagent,
 				"-DtestingMode=true",
+				"-Dquiet=true",
 				"-DwebserverPort=" + port,
 				"-jar", webserverBinary).inheritIO();
 		return processBuilder.start();

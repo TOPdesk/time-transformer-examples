@@ -22,6 +22,7 @@ The example application is a little authentication webservice where you have to 
 
 ## Configuring the application:
 * `-DwebserverPort=[PORT]` runs the webserver on port `[PORT]`. Defaults to 8080.
+* `-Dquite=true` ensures the webserver does not print any logging to `stdout`.
 * `-DtestingMode=true` enables the `http://localhost:8080/test/transformtime` endpoint in the webserver. Requires the time-transformer-agent to be attached to the JVM as a `javaagent`:
 
     ```

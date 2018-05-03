@@ -26,11 +26,17 @@ public class AuthenticationWebServer {
 		HttpServer server = HttpServer.create(new InetSocketAddress(getWebServerPort()), 0);
 		server.createContext("/login", new AuthenticationHandler());
 		if (Boolean.getBoolean("testingMode")) {
-			System.out.println("Enabling testing mode");
+			log("Enabling testing mode");
 			server.createContext("/test/transformtime", new TimeTransformerHandler());
 		}
 		server.start();
-		System.out.println("HttpServer started and listening on: " + server.getAddress());
+		log("HttpServer started and listening on: " + server.getAddress());
+	}
+	
+	private static void log(String message) {
+		if (!Boolean.getBoolean("quiet")) {
+			System.out.println(message);
+		}
 	}
 	
 	private static int getWebServerPort() {
