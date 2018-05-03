@@ -18,8 +18,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.google.common.base.Predicate;
-
 public class AuthenticationWebserverE2ECase {
 	private static final int LOCKOUT_ATTEMPTS = 3;
 	private static final int WEBDRIVER_TIMEOUT_IN_SECONDS = 10;
@@ -155,12 +153,7 @@ public class AuthenticationWebserverE2ECase {
 	}
 	
 	private void waitForLoginScreenToReload() {
-		new WebDriverWait(driver, WEBDRIVER_TIMEOUT_IN_SECONDS).until(new Predicate<WebDriver>() {
-			@Override
-			public boolean apply(WebDriver input) {
-				return driver.findElement(By.id("username")).getText().isEmpty();
-			}
-		});
+		new WebDriverWait(driver, WEBDRIVER_TIMEOUT_IN_SECONDS).until(input -> driver.findElement(By.id("username")).getText().isEmpty());
 	}
 	
 	private Process startStandaloneWebServer() throws IOException {
