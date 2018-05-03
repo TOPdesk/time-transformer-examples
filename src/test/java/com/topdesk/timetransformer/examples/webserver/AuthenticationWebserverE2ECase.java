@@ -1,6 +1,6 @@
 package com.topdesk.timetransformer.examples.webserver;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -114,38 +114,34 @@ public class AuthenticationWebserverE2ECase {
 		verifyWebServerTimeHasPast(fiveMinutesLater);
 	}
 	
+	private void disableTimeTransformer() throws Exception {
+		sendTimeTransformerRequest("disable");
+	}
+	
 	private void transformWebServerTime(long time) throws MalformedURLException, IOException {
-		URI uri = URI.create(transformtimeEndpoint + "?time=" + time);
-		HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
-		connection.connect();
-		if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
-			throw new IllegalStateException("test/transformtime endpoint not reachable");
-		}
+		sendTimeTransformerRequest("time=" + time);
 	}
 	
 	private void verifyWebServerTimeHasPast(long time) throws MalformedURLException, IOException {
-		URI uri = URI.create(transformtimeEndpoint + "?current");
-		HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
-		connection.connect();
-		if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-			try (InputStream inputStream = connection.getInputStream()) {
-				long currentTime = Long.parseLong(HtmlUtils.readInputStreamIntoString(inputStream));
-				if (currentTime < time) {
-					throw new IllegalStateException("test/transformtime did not advance the time ");
-				}
+		HttpURLConnection connection = sendTimeTransformerRequest("current");
+		try (InputStream inputStream = connection.getInputStream()) {
+			long currentTime = Long.parseLong(HtmlUtils.readInputStreamIntoString(inputStream));
+			if (currentTime < time) {
+				throw new IllegalStateException("test/transformtime did not advance the time ");
 			}
 		}
 	}
 	
-	private void disableTimeTransformer() throws Exception {
-		URI uri = URI.create(transformtimeEndpoint + "?disable");
+	private HttpURLConnection sendTimeTransformerRequest(String action) throws IOException, MalformedURLException {
+		URI uri = URI.create(transformtimeEndpoint + "?" + action);
 		HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
 		connection.connect();
 		if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
 			throw new IllegalStateException("test/transformtime endpoint not reachable");
 		}
+		return connection;
 	}
-	
+		
 	private void performLogin(String username, String password) {
 		driver.findElement(By.id("username")).sendKeys(username);
 		driver.findElement(By.id("password")).sendKeys(password);
