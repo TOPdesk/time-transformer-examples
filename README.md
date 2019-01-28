@@ -7,7 +7,7 @@ The example application is a little authentication webservice where you have to 
 *Disclaimer: this application is only intended to give a use case for time-dependent code. It is explicitly __not__ an example of how to do authentication in a web application!*
 
 # Running the application server manually
-* This example project currently requires JDK10 or higher to run. The JDK8 version of this example is available under the [java-8 tag](https://github.com/TOPdesk/time-transformer-examples/tree/java-8).
+* This example project currently requires JDK11 or higher to run. The JDK8 version of this example is available under the [java-8 tag](https://github.com/TOPdesk/time-transformer-examples/tree/java-8).
 * Build the application server:
   ```
   mvn clean package
@@ -27,7 +27,7 @@ The example application is a little authentication webservice where you have to 
 * `-DtestingMode=true` enables the `http://localhost:8080/test/transformtime` endpoint in the webserver. Requires the time-transformer-agent to be attached to the JVM as a `javaagent`:
 
     ```
-    java -javaagent:/path/to/time-transformer-agent-1.0.0.jar -DtestingMode=true -jar target/time-transformer-examples-1.0.0-SNAPSHOT.jar
+    java -javaagent:/path/to/time-transformer-agent-1.2.0.jar -DtestingMode=true -jar target/time-transformer-examples-1.0.0-SNAPSHOT.jar
     ```
 
 # End-to-end test scenarios:
