@@ -27,7 +27,7 @@ The example application is a little authentication webservice where you have to 
 * `-DtestingMode=true` enables the `http://localhost:8080/test/transformtime` endpoint in the webserver. Requires the time-transformer-agent to be attached to the JVM as a `javaagent`:
 
     ```
-    java -javaagent:/path/to/time-transformer-agent-1.2.0.jar -DtestingMode=true -jar target/time-transformer-examples-1.0.0-SNAPSHOT.jar
+    java -javaagent:/path/to/time-transformer-agent-1.4.0.jar -DtestingMode=true -jar target/time-transformer-examples-1.0.0-SNAPSHOT.jar
     ```
 
 # End-to-end test scenarios:
