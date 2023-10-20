@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URI;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.AfterEach;
@@ -20,7 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AuthenticationWebserverE2ECase {
 	private static final int LOCKOUT_ATTEMPTS = 3;
-	private static final int WEBDRIVER_TIMEOUT_IN_SECONDS = 10;
+	private static final Duration WEBDRIVER_TIMEOUT = Duration.ofSeconds(10);
 	
 	private int port = getRandomUnusedPort();
 	private Process webServerProcess;
@@ -35,7 +36,7 @@ public class AuthenticationWebserverE2ECase {
 		webServerProcess = startStandaloneWebServer();
 		waitForWebserverStarted();
 		driver = new HtmlUnitDriver();
-		driver.manage().timeouts().implicitlyWait(WEBDRIVER_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(WEBDRIVER_TIMEOUT);
 		driver.navigate().to(loginUrl);
 	}
 	
@@ -149,7 +150,7 @@ public class AuthenticationWebserverE2ECase {
 	}
 	
 	private void waitForLoginScreenToReload() {
-		new WebDriverWait(driver, WEBDRIVER_TIMEOUT_IN_SECONDS).until(input -> driver.findElement(By.id("username")).getText().isEmpty());
+		new WebDriverWait(driver, WEBDRIVER_TIMEOUT).until(input -> driver.findElement(By.id("username")).getText().isEmpty());
 	}
 	
 	private Process startStandaloneWebServer() throws IOException {
