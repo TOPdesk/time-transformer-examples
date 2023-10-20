@@ -1,6 +1,6 @@
 package com.topdesk.timetransformer.examples.webserver;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,9 +10,9 @@ import java.net.ServerSocket;
 import java.net.URI;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
@@ -30,7 +30,7 @@ public class AuthenticationWebserverE2ECase {
 	private final String transformtimeEndpoint = baseUrl + "test/transformtime";
 	
 	// Ensure test isolation: make sure every E2E test runs against its own instance of the webserver.
-	@Before
+	@BeforeEach
 	public void startWebserver() throws IOException {
 		webServerProcess = startStandaloneWebServer();
 		waitForWebserverStarted();
@@ -39,7 +39,7 @@ public class AuthenticationWebserverE2ECase {
 		driver.navigate().to(loginUrl);
 	}
 	
-	@After
+	@AfterEach
 	public void stopWebserver() throws Exception {
 		try {
 			disableTimeTransformer();
