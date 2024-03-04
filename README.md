@@ -32,7 +32,7 @@ The example application is a little authentication webservice where you have to 
 
 # End-to-end test scenarios:
 
-*These scenarios are implemented using Selenium's `HtmlUnitDriver` and can be found in [`AuthenticationWebserverE2ECase.java`](https://github.com/TOPdesk/time-transformer-examples/tree/master/src/test/java/com/topdesk/timetransformer/examples/webserver/AuthenticationWebserverE2ECase.java)*
+*These scenarios are implemented using Selenium's `HtmlUnitDriver` and can be found in [`AuthenticationWebserverE2ECase.java`](https://github.com/TOPdesk/time-transformer-examples/tree/main/src/test/java/com/topdesk/timetransformer/examples/webserver/AuthenticationWebserverE2ECase.java)*
 
 ## Correct login:
 
