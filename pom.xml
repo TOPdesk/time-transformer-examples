@@ -10,6 +10,10 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<name>System time transformer examples</name>
 	<description>Example project showing how to use the system time transformer</description>
+
+	<properties>
+		<selenium.version>4.21.0</selenium.version>
+	</properties>
 	
 	<dependencyManagement>
 		<dependencies>
@@ -22,7 +26,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>com.topdesk</groupId>
@@ -37,13 +41,13 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.21.0</version>
+			<version>${selenium.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>htmlunit-driver</artifactId>
-			<version>4.13.0</version>
+			<artifactId>htmlunit3-driver</artifactId>
+			<version>${selenium.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
