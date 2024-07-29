@@ -12,7 +12,7 @@
 	<description>Example project showing how to use the system time transformer</description>
 
 	<properties>
-		<selenium.version>4.22.0</selenium.version>
+		<selenium.version>4.23.0</selenium.version>
 	</properties>
 	
 	<dependencyManagement>
